@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Yandex Music Quiet",
+  "version": "1.0.0",
+  "description": "Makes Yandex Music's existing volume slider much quieter and more precise near zero. No extra controls.",
+  "minimum_chrome_version": "111",
+  "icons": {"16": "icons/16.png", "32": "icons/32.png", "128": "icons/128.png"},
+  "content_scripts": [
+    {
+      "matches": ["https://music.yandex.ru/*", "https://music.yandex.com/*", "https://music.yandex.by/*", "https://music.yandex.kz/*", "https://music.yandex.uz/*"],
+      "js": ["audio-engine.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true,
+      "match_about_blank": true
+    },
+    {
+      "matches": ["https://music.yandex.ru/*", "https://music.yandex.com/*", "https://music.yandex.by/*", "https://music.yandex.kz/*", "https://music.yandex.uz/*"],
+      "js": ["slider.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
